@@ -4968,6 +4968,9 @@ footer {
   left: 54px;
   top: 2px; }
 
+.navbar--add {
+  margin-right: 0px; }
+
 /* Posts
 ************************************************/
 .post--section {

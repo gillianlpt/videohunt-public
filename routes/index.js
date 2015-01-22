@@ -10,6 +10,11 @@ module.exports = function(app, passport) {
       'index', { title: 'Express', user: req.user});
   });
 
+  app.get('/addpost',function(req,res){
+    res.render(
+      'addPostModal', {title:'Add Post', user:req.user});
+  });
+
   app.use(function(req, res, next) {
     res.locals.user = req.user;
     next();

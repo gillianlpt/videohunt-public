@@ -34,7 +34,6 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'assets')));
 
-
 // required for passport
 app.use(session({
   secret: 'ilovescotchandvideos',

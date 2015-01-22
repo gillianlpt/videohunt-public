@@ -1,5 +1,5 @@
 
-angular.module('Videohunt', ['ui.router'])
+angular.module('Videohunt', ['ui.router', 'ui.bootstrap'])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
