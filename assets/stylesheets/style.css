@@ -4971,6 +4971,18 @@ footer {
 .navbar--add {
   margin-right: 0px; }
 
+/* Modal Styling
+************************************************/
+.modal-header {
+  background-color: #00D3EF;
+  color: white; }
+  .modal-header h3 {
+    color: white;
+    padding: 10 0; }
+  .modal-header p {
+    font-size: 16px;
+    line-height: 20px; }
+
 /* Posts
 ************************************************/
 .post--section {
