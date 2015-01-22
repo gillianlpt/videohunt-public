@@ -10,9 +10,14 @@ module.exports = function(app, passport) {
       'index', { title: 'Express', user: req.user});
   });
 
-  app.get('/addpost',function(req,res){
-    res.render(
-      'addPostModal', {title:'Add Post', user:req.user});
+  app.get('/addpost',function(request,response){
+    response.render(
+      'addPostModal', {title:'Add Post', user:request.user});
+  });
+
+  app.get('/postsuccess', function(request, response) {
+    response.render(
+      'addPostSuccessModal', {title:'Post Success', user: request.user});
   });
 
   app.get('/admin', function(request, response) {

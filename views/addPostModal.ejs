@@ -3,7 +3,7 @@
   <p> Add more information on the video below to better help users discover them. </p>
 </div>
 <div class="modal-body">
-  <form ng-controller="PostCtrl" name="postForm" ng-submit="add(post-form.$valid)" novalidate>
+  <form ng-controller="PostCtrl" name="postForm" ng-submit="addPost(postForm.$valid)" novalidate>
     <div class="input--diffline">
       <input name="title" ng-model="post.title" ng-class="{'has-error': postForm.title.$error.required && submitted}" type="text" placeholder="Video Title" required/>
     </div>
@@ -11,7 +11,7 @@
       <input name="link" ng-model="post.link" ng-class="{'has-error': postForm.link.$error.required && submitted, 'has-error': postForm.link.$invalid && submitted}"  type="url" placeholder="Video URL" required/>
     </div>
     <div class="input--diffline">
-      <input name="description" ng-class="{'has-error': postForm.description.$error.required && submitted}" ng-model="post.description" type="text" placeholder="1-liner Description" required/>
+      <input name="description" ng-model="post.description"  ng-class="{'has-error': postForm.description.$error.required && submitted}" type="text" placeholder="1-liner Description" required/>
     </div>
     <!-- <div class="input--diffline"> -->
       <!-- <input ng-model="" type="text" placeholder="Tag video with topics and channels"/> -->

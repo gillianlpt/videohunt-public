@@ -1,14 +1,30 @@
 angular.module('Videohunt')
-.controller('PostCtrl', ['$rootScope',  '$location', '$anchorScroll', 'security', '$modal',
-function($scope, $location, $anchorScroll, security, $modal){
+.controller('PostCtrl', ['$scope', '$location', '$anchorScroll', 'security', '$modal', 'PostFactory',
+function($scope, $location, $anchorScroll, security, $modal, PostFactory, $modalInstance){
 
-  $scope.add = function(isValid) {
-    console.log('am here');
-    // if (isValid) {
-    //   alert('our form is amazing!');
-    // } else {
+  $scope.addPost = function(isValid) {
     $scope.submitted = true;
-    // }
+
+    // if form is all valid
+    if (isValid) {
+      // create a new post
+      PostFactory.create({
+        title: $scope.post.title,
+        link: $scope.post.link,
+        description: $scope.post.description
+      });
+      // close out previous modal
+      $scope.modalInstance.close();
+
+      // confirm add to user 
+      var modalInstance = $modal.open({
+        templateUrl: '/postsuccess',
+        controller: 'PostCtrl',
+        resolve: {
+
+        }
+      });
+    }
   };
 
 }]);
