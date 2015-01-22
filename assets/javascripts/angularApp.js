@@ -1,5 +1,5 @@
 
-angular.module('VideoHunt', ['ui.router'])
+angular.module('Videohunt', ['ui.router'])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
@@ -9,16 +9,16 @@ function($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/home',
       templateUrl: '/home.html',
-      controller: 'MainCtrl',
+      // controller: 'MainCtrl',
       resolve: {
-        postPromise: ['topics', function(topics){
-          // return topics.getAll();
-          return topics.getSessionAll();
-        }],
-        postPromise: ['users', function(users){
-          // return topics.getAll();
-          return users.getSessionAll();
-        }]
+        // postPromise: ['topics', function(topics){
+        //   // return topics.getAll();
+        //   return topics.getSessionAll();
+        // }],
+        // postPromise: ['users', function(users){
+        //   // return topics.getAll();
+        //   return users.getSessionAll();
+        // }]
       }
     })
     .state('topics', {
@@ -148,57 +148,10 @@ function($stateProvider, $urlRouterProvider) {
 }])
 .controller('MainCtrl', [
 '$scope',
-'topics',
 '$location',
 '$anchorScroll',
-'users',
-function($scope, topics, $location, $anchorScroll, users){
+function( $scope, $location, $anchorScroll){
 
-  // freebase topics
-  $("#topicName").suggest({
-    "key" : "AIzaSyAUCxkehe3SbBfiQvQVEPD7vqFRbZi_1fQ",
-    "flyout": false
-  }).bind('fb-select', function(e, data) {
-    $scope.topicName = data.name;
-    $scope.topicId = data.id;
-    // $('.topicname').html(data.name);
-  });
-
-  $scope.test = 'Hello world!';
-  $scope.topics = topics.topics;
-  $scope.users = users.users;
-  $scope.date = new Date();
-
-  $scope.addTopic = function(){
-
-    if($scope.topicName === '') { return; }
-    $scope.topicName = $('#topicName').val();
-    topics.update({
-      topicName: $scope.topicName,
-      freebase_id: $scope.topicId
-    });
-
-    $scope.topicName = '';
-    $('#topicName').removeClass("ng-dirty");
-  };
-
-  $scope.addUser = function(){
-    if($scope.email === '') {return;}
-    // console.log(sessionTopics);
-    users.update({
-      email: $scope.email,
-      topics: $scope.topics
-    });
-  };
-
-  $scope.gotoTop = function() {
-    // set the location.hash to the id of
-    // the element you wish to scroll to.
-    $location.hash('top');
-
-    // call $anchorScroll()
-    $anchorScroll();
-  };
 
 }])
 .directive('ngEnter', function () {

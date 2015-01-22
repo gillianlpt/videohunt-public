@@ -4947,6 +4947,27 @@ footer {
       padding: 15px;
       font-size: 20px; }
 
+.navbar--avatar {
+  max-height: 43px;
+  width: auto;
+  text-align: right;
+  border-radius: 25px; }
+
+.navbar--alert {
+  position: relative;
+  left: -12px;
+  top: -5px; }
+
+.navbar-alert-count {
+  /* 16: */
+  font-size: 15px;
+  color: #FFFFFF;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+  left: 54px;
+  top: 2px; }
+
 /* Posts
 ************************************************/
 .post--section {
@@ -4958,7 +4979,8 @@ footer {
     .post--section .post:hover {
       background-color: #efefef;
       border-radius: 3px;
-      max-width: 100%; }
+      max-width: 100%;
+      height: auto; }
   .post--section .today {
     font-size: 20px;
     color: #414141;
@@ -4966,18 +4988,23 @@ footer {
     font-weight: 600;
     text-align: center;
     margin-bottom: 50px; }
-  .post--section .upvote_count {
+  .post--section .post--upvote {
+    padding-top: 10px; }
+  .post--section .post--upvote--count {
     font-size: 16px;
     color: #00D3EF;
     line-height: 19px;
     font-weight: 600;
-    padding-top: 5px; }
+    padding-top: 7px;
+    text-align: center;
+    width: 25px; }
   .post--section .post--title {
     font-size: 18px;
     color: #414141;
     line-height: 25px;
     font-weight: 600; }
   .post--section .post--thumbnail {
+    margin-top: 5px;
     max-height: 60px;
     width: auto; }
   .post--section .post--avatar {
@@ -4991,7 +5018,7 @@ footer {
     line-height: 18px;
     font-weight: 200; }
   .post--section .post--creator {
-    margin-left: 8px; }
+    margin-left: 5px; }
   .post--section .post--tags {
     position: relative;
     left: -220px;

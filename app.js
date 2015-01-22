@@ -1,38 +1,61 @@
+// set up ======================================================================
+// get all the tools we need
 var express = require('express');
+var app = express();
+var mongoose = require('mongoose');
 var path = require('path');
 var favicon = require('static-favicon');
-var logger = require('morgan');
+var passport = require('passport');
+var flash    = require('connect-flash');
+
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+var logger = require('morgan');
+var session = require('express-session');
 
-// mongoose.connect('mongodb://localhost/news');
-// mongoose.connect('mongodb://localhost/topics');
-mongoose.connect('mongodb://heroku:_Hq80-unyeNdFrnxWD73ITFciDxuLLO8ek1zIQSjODSR5Qq_FRDoLfwS1Y9C1uOhxYGEamn7P07Gmi0m9CjrIQ@candidate.34.mongolayer.com:10643,candidate.33.mongolayer.com:10461/app33132634');
+var dbConfig = require('./config/database.js');
+var authConfig = require('./config/auth.js');
+var cors = require('cors');
 
-require('./models/Posts');
-require('./models/Comments');
-require('./models/Topics');
-require('./models/Users');
+// configuration ===============================================================
+mongoose.connect(dbConfig.url); // connect to our database
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+require('./config/passport')(passport); // pass passport for configuration
 
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
+// set up our express application
+app.use(logger('dev')); // log every request to the console
+app.use(cookieParser('ilovescotchandvideos')); // read cookies (needed for auth)
+app.use(bodyParser.json()); // get information from html forms
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(favicon());
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+
+app.use(cors());
+app.set('view engine', 'ejs'); // set up ejs for templating
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'assets')));
 
-app.use('/', routes);
-app.use('/users', users);
+
+// required for passport
+app.use(session({
+  secret: 'ilovescotchandvideos',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {expires: false}
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+// routes ======================================================================
+var routes = require('./routes/index')(app, passport);
+
+
+// var users = require('./routes/users');
+
+// app.use('/', routes);
+// app.use('/users', users);
+
+
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -54,6 +77,12 @@ if (app.get('env') === 'development') {
         });
     });
 }
+
+// Check if user is authenticated
+app.use(function (req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  next();
+});
 
 // production error handler
 // no stacktraces leaked to user
