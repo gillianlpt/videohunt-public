@@ -15,6 +15,11 @@ module.exports = function(app, passport) {
       'addPostModal', {title:'Add Post', user:req.user});
   });
 
+  app.get('/admin', function(request, response) {
+    response.render(
+    'admin', {title: 'Videohunt Admin', user: request.user});
+  });
+
   app.use(function(req, res, next) {
     res.locals.user = req.user;
     next();

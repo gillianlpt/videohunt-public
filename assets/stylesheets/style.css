@@ -4906,6 +4906,58 @@ button {
 footer {
   margin-top: 0px; }
 
+/* Form and Input Styling
+************************************************/
+input {
+  font-size: 18px;
+  color: #414141;
+  line-height: 22px;
+  border: 2px solid #CFCFCF;
+  border-radius: 8px;
+  width: 90%;
+  padding: 10 5;
+  outline: none;
+  -webkit-appearance: none;
+  margin: 0 0 15 0; }
+  input .input--diffline {
+    margin-bottom: 10px; }
+  input:focus {
+    border: 2px solid #42F9CF;
+    color: #414141; }
+  input.has-error {
+    background-color: #fff3f4; }
+
+.has-error {
+  background-color: #fff3f4; }
+
+/* Button Styling
+************************************************/
+.btn-primary {
+  background: #42F9CF;
+  border: 1px solid #42F9CF;
+  border-radius: 30px;
+  font-family: ProximaNova-Regular, Helvetica;
+  font-size: 18px;
+  font-weight: 300;
+  color: #FFFFFF;
+  padding: 10px 25px;
+  line-height: 22px; }
+  .btn-primary.btn-blue {
+    background: #00D3EF;
+    border: 1px solid #00D3EF; }
+  .btn-primary.btn-orange {
+    background: #FF7200;
+    border: 1px solid #FF7200; }
+  .btn-primary.btn-grey {
+    background: #7d7d7d;
+    border: 1px solid #7d7d7d; }
+  .btn-primary:disabled {
+    background: #efefef;
+    border: 1px solid #efefef; }
+  .btn-primary:disabled:hover {
+    background: #efefef;
+    border: 1px solid #efefef; }
+
 /* Navbar Styling
 ************************************************/
 .navbar {
@@ -5090,32 +5142,6 @@ footer {
 
 .btn {
   border-radius: 2px; }
-
-.btn-primary {
-  background: #42F9CF;
-  border: 1px solid #42F9CF;
-  border-radius: 30px;
-  font-family: ProximaNova-Regular, Helvetica;
-  font-size: 18px;
-  font-weight: 300;
-  color: #FFFFFF;
-  padding: 10px 25px;
-  line-height: 22px; }
-  .btn-primary.btn-blue {
-    background: #00D3EF;
-    border: 1px solid #00D3EF; }
-  .btn-primary.btn-orange {
-    background: #FF7200;
-    border: 1px solid #FF7200; }
-  .btn-primary.btn-grey {
-    background: #7d7d7d;
-    border: 1px solid #7d7d7d; }
-  .btn-primary:disabled {
-    background: #efefef;
-    border: 1px solid #efefef; }
-  .btn-primary:disabled:hover {
-    background: #efefef;
-    border: 1px solid #efefef; }
 
 .btn-same-line {
   margin-left: 10px;

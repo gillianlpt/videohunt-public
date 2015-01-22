@@ -1,10 +1,23 @@
-
 <div class="modal-header">
   <h3 class="modal-title">Add a new video</h3>
   <p> Add more information on the video below to better help users discover them. </p>
 </div>
 <div class="modal-body">
-  <input type="text" placeholder="Video Title"/>
-  <input type="text" placeholder="Video URL"/>
-  <input type="text" placeholder="1-liner description"/>
+  <form ng-controller="PostCtrl" name="postForm" ng-submit="add(post-form.$valid)" novalidate>
+    <div class="input--diffline">
+      <input name="title" ng-model="post.title" ng-class="{'has-error': postForm.title.$error.required && submitted}" type="text" placeholder="Video Title" required/>
+    </div>
+    <div class="input--diffline">
+      <input name="link" ng-model="post.link" ng-class="{'has-error': postForm.link.$error.required && submitted, 'has-error': postForm.link.$invalid && submitted}"  type="url" placeholder="Video URL" required/>
+    </div>
+    <div class="input--diffline">
+      <input name="description" ng-class="{'has-error': postForm.description.$error.required && submitted}" ng-model="post.description" type="text" placeholder="1-liner Description" required/>
+    </div>
+    <!-- <div class="input--diffline"> -->
+      <!-- <input ng-model="" type="text" placeholder="Tag video with topics and channels"/> -->
+    <!-- </div> -->
+    <button type="submit" class="btn-primary">
+      Let's go!
+    </button>
+  </form>
 </div>
