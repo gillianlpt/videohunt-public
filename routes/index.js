@@ -39,7 +39,6 @@ module.exports = function(app, passport) {
   app.get('/posts', function(req, res, next) {
     Post.find(function(err, posts){
       if(err){ return next(err); }
-
       res.json(posts);
     });
   });

@@ -9,16 +9,11 @@ function($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/home',
       templateUrl: '/home.html',
-      // controller: 'MainCtrl',
+      controller: 'MainCtrl',
       resolve: {
-        // postPromise: ['topics', function(topics){
-        //   // return topics.getAll();
-        //   return topics.getSessionAll();
-        // }],
-        // postPromise: ['users', function(users){
-        //   // return topics.getAll();
-        //   return users.getSessionAll();
-        // }]
+        postPromise: ['PostFactory', function(PostFactory){
+          return PostFactory.getAll();
+        }]
       }
     })
     .state('topics', {
@@ -150,9 +145,11 @@ function($stateProvider, $urlRouterProvider) {
 '$scope',
 '$location',
 '$anchorScroll',
-function( $scope, $location, $anchorScroll){
-
-
+'PostFactory',
+function( $scope, $location, $anchorScroll, PostFactory){
+  $scope.posts = PostFactory.posts;
+  // $scope.posts = PostFactory.getAll();
+  // console.log(PostFactory.getAll());
 }])
 .directive('ngEnter', function () {
   return function (scope, element, attrs) {

@@ -33,9 +33,9 @@
           <div class="today">
             TODAY
           </div>
-          <% include post.ejs %>
+
           <div ng-repeat="post in posts | orderBy: '-created_at'">
-            <div ng-include src="'/post.ejs'"></div>
+            <% include post.ejs %>
           </div>
         </div>
 

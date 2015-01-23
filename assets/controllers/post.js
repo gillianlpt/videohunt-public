@@ -16,12 +16,13 @@ function($scope, $location, $anchorScroll, security, $modal, PostFactory, $modal
       // close out previous modal
       $scope.modalInstance.close();
 
-      // confirm add to user 
+      // confirm add to user
       var modalInstance = $modal.open({
         templateUrl: '/postsuccess',
         controller: 'PostCtrl',
         resolve: {
-
+          title: $scope.post.title,
+          description: $scope.post.description
         }
       });
     }
