@@ -1,6 +1,6 @@
 <div class="post">
   <div class="post--upvote col-xs-offset-0 col-xs-1 col-md-offset-2 col-md-1">
-    <a href="#">
+    <a href ng-click="upvote(post)">
       <svg width="25px" height="18px" viewBox="0 0 23 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
         <!-- Generator: Sketch 3.2.1 (9971) - http://www.bohemiancoding.com/sketch -->
         <title>Rectangle 8</title>
@@ -14,7 +14,7 @@
       </svg>
     </a>
     <div class="post--upvote--count">
-      122
+      {{post.upvotes}}
     </div>
   </div>
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1">

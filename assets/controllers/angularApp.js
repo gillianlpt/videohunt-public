@@ -9,7 +9,7 @@ function($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/home',
       templateUrl: '/home.html',
-      controller: 'MainCtrl',
+      controller: 'PostCtrl',
       resolve: {
         postPromise: ['PostFactory', function(PostFactory){
           return PostFactory.getAll();
@@ -148,8 +148,7 @@ function($stateProvider, $urlRouterProvider) {
 'PostFactory',
 function( $scope, $location, $anchorScroll, PostFactory){
   $scope.posts = PostFactory.posts;
-  // $scope.posts = PostFactory.getAll();
-  // console.log(PostFactory.getAll());
+
 }])
 .directive('ngEnter', function () {
   return function (scope, element, attrs) {

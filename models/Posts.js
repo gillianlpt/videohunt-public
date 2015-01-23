@@ -5,10 +5,13 @@ var PostSchema = new mongoose.Schema({
   title: String,
   link: String,
   image_link: String,
-  upvotes: {type: Number, default: 0},
+  upvotes: {type: Number, default: 1},
   description: String,
   topics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Topic' }],
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+  posted_by: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'User'
+  },
   created_at: {
     type: Date,
     required: true,
